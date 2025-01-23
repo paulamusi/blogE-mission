@@ -1,4 +1,24 @@
-# Nuxt Minimal Starter
+Nuxt 3 Simple App
+Check out the tutorial video from https://webmobtuts.com.
+
+Setup
+Make sure to install the dependencies:
+
+# npm
+npm install
+Start the development server on http://localhost:3000:
+
+# npm
+npm run dev
+JSON Server
+# npm
+npm install -g json-server
+The json server data located on db.json file.
+
+Start the development server on http://localhost:3000:
+
+# npm
+json-server --watch db.json --port 3001# Nuxt Minimal Starter
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
