@@ -1,5 +1,4 @@
-Nuxt 3 Simple App
-Check out the tutorial video from https://webmobtuts.com.
+
 
 Setup
 Make sure to install the dependencies:
