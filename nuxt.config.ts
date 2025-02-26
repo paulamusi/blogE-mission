@@ -23,11 +23,5 @@ export default defineNuxtConfig({
     locales: ['en', 'es'],
     defaultLocale: 'en',
     vueI18n: './i18n.config.ts' 
-  },
-  runtimeConfig: {
-    secretKey: '',
-    public: {
-      apiBase: ''
-    }
   }
 })
