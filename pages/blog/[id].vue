@@ -1,16 +1,30 @@
 <script setup lang="ts">
-import type { Post } from '~/types/Post'; 
+import { ref, computed, onMounted } from 'vue';
+import type { Post } from '~/types/Post';
+import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
 
 const { locale } = useI18n();
-
-const config = useRuntimeConfig();
 const route = useRoute();
-const apiBase = config.public.apiBase;
 
-const { data: post, error, refresh } = await useAsyncData<Post>(`posts_p${route.params.id}`, () =>
-  $fetch(`${apiBase}/posts/${route.params.id}`)
-);
 
+const posts = ref<Post[] | null>(null);
+const error = ref<Error | null>(null);
+
+onMounted(async () => {
+  try {
+    const response = await fetch('/db.json');
+    if (!response.ok) throw new Error('Error al cargar los posts');
+    
+    const data = await response.json();
+    posts.value = data.posts;
+  } catch (err) {
+    error.value = err as Error;
+    console.error(err);
+  }
+});
+
+const post = computed(() => posts.value?.find(p => p.id === Number(route.params.id)));
 </script>
 
 <template>
